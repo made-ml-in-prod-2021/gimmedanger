@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from data import FINAL_CAT_COLUMNS, FINAL_NUM_COLUMNS, TARGET_COLUMN
+from ml_project.data import FINAL_CAT_COLUMNS, FINAL_NUM_COLUMNS, TARGET_COLUMN
 from typing import List
 
 

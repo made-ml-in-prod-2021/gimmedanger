@@ -2,7 +2,7 @@ from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
-from entities.feature_params import FeatureParams
+from ml_project.entities import FeatureParams
 
 
 def build_categorical_pipeline() -> Pipeline:

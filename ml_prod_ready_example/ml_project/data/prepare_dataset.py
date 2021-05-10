@@ -1,6 +1,6 @@
 from typing import Tuple
 from sklearn.model_selection import train_test_split
-from entities import SplitTrainValParams
+from ml_project.entities import SplitTrainValParams
 import pandas as pd
 
 
