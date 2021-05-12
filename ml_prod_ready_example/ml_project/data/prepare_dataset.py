@@ -4,8 +4,6 @@ from ml_project.entities import SplitTrainValParams
 import pandas as pd
 
 
-FILENAME = 'dataset.csv'
-
 TARGET_COLUMN = 'target'
 
 ORIG_SHAPE = (303, 14)

@@ -6,7 +6,7 @@ from ml_project.entities import SplitTrainValParams
 
 from ml_project.data \
     import prepare_data, read_data, split_train_val_data, \
-    FILENAME, ORIG_SHAPE, ORIG_COLUMNS, THALASSEMIA_TYPES, \
+    ORIG_SHAPE, ORIG_COLUMNS, THALASSEMIA_TYPES, \
     SEX_TYPES, CHEST_PAIN_TYPES, FASTING_BLOOD_SUGAR_TYPES, \
     REST_ECG_TYPES, EXERCISE_INDUCED_ANGINA_TYPES, ST_SLOPE_TYPES, \
     FINAL_COLUMNS, FINAL_CAT_COLUMNS, FINAL_NUM_COLUMNS
@@ -14,12 +14,12 @@ from ml_project.data \
 
 class PrepareDatasetTestCase(unittest.TestCase):
     def test_read_data(self) -> NoReturn:
-        df = read_data(f'ml_project/data/{FILENAME}')
+        df = read_data(f'data/raw/dataset.csv')
         self.assertEqual(df.shape, ORIG_SHAPE)
         self.assertTupleEqual(tuple(df.columns), ORIG_COLUMNS)
 
     def test_prepare_data(self) -> NoReturn:
-        df = read_data(f'ml_project/data/{FILENAME}')
+        df = read_data(f'data/raw/dataset.csv')
         mod_df, cat_features, num_features = prepare_data(df)
         self.assertEqual(mod_df.shape, ORIG_SHAPE)
         self.assertTupleEqual(tuple(mod_df.columns), FINAL_COLUMNS)
@@ -34,7 +34,7 @@ class PrepareDatasetTestCase(unittest.TestCase):
         self.assertSetEqual(set(mod_df['st_slope'].unique()), set(ST_SLOPE_TYPES))
 
     def test_split_train_val_data(self) -> NoReturn:
-        df = read_data(f'ml_project/data/{FILENAME}')
+        df = read_data(f'data/raw/dataset.csv')
         # regular case
         params = SplitTrainValParams(test_size=0.1)
         train_df, val_df = split_train_val_data(df, params)

@@ -3,14 +3,14 @@ import pandas as pd
 from typing import NoReturn
 
 from ml_project.entities import FeatureParams
-from ml_project.data import FILENAME, read_data, prepare_data
+from ml_project.data import read_data, prepare_data
 from ml_project.features.build_transformer import build_transformer, build_numerical_pipeline, \
     build_categorical_pipeline
 
 
 class BuildTransformerTestCase(unittest.TestCase):
     def test_categorical_features_pipeline(self) -> NoReturn:
-        df = read_data(f'ml_project/data/{FILENAME}').head()
+        df = read_data(f'data/raw/dataset.csv').head()
         df, all_cat_features, all_num_features = prepare_data(df)
         params = FeatureParams(categorical_features=['sex'])
         df_cat = df[params.categorical_features]
@@ -27,7 +27,7 @@ class BuildTransformerTestCase(unittest.TestCase):
                 self.assertEqual(transformed_val[1], 0.)
 
     def test_numerical_features_pipeline(self) -> NoReturn:
-        df = read_data(f'ml_project/data/{FILENAME}')
+        df = read_data(f'data/raw/dataset.csv')
         df, all_cat_features, all_num_features = prepare_data(df)
         params = FeatureParams()
         df_num = df[params.numerical_features]
@@ -39,7 +39,7 @@ class BuildTransformerTestCase(unittest.TestCase):
             self.assertAlmostEqual(df_num_transformed.min()[idx], 0.)
 
     def test_full_features_pipeline(self) -> NoReturn:
-        df = read_data(f'ml_project/data/{FILENAME}')
+        df = read_data(f'data/raw/dataset.csv')
         df, all_cat_features, all_num_features = prepare_data(df)
         params = FeatureParams()
         pipe = build_transformer(params)

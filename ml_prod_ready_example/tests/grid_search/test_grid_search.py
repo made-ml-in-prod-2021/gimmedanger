@@ -6,7 +6,7 @@ from ml_project.features import build_transformer, split_features_target_data
 from ml_project.entities.feature_params import FeatureParams
 from ml_project.entities.model_params import SearchParams, ModelParams
 from ml_project.grid_search import build_search_pipeline, run_grid_search
-from ml_project.data import FILENAME, read_data, prepare_data
+from ml_project.data import read_data, prepare_data
 
 
 class TestGridSearchTestCase(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestGridSearchTestCase(unittest.TestCase):
             n_estimator_lst=[model_params.n_estimators],
             max_depth_lst=[model_params.max_depth]
         )
-        df = read_data(f'ml_project/data/{FILENAME}')
+        df = read_data(f'data/raw/dataset.csv')
         features, target = split_features_target_data(prepare_data(df)[0], feature_params)
         transformer = build_transformer(feature_params)
         search_pipe = build_search_pipeline(transformer, model_params, search_params)
