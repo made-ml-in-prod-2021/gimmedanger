@@ -47,15 +47,17 @@ Project Organization
     ├── ml_project         <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
-    │   ├── data           <- download or generate data
+    │   ├── train_pipeline.py  <- Full pipelines for training (with test/val split or grid search cv)
     │   │
-    │   ├── emtities       <- parameters dataclasses
+    │   ├── data               <- download or generate data
     │   │
-    │   ├── features       <- turn raw data into features for modeling
+    │   ├── emtities           <- parameters dataclasses
     │   │
-    │   ├── grid_search    <- grid search train for to find best model
+    │   ├── features           <- turn raw data into features for modeling
     │   │
-    │   └── models         <- train models and then use trained models to make
+    │   ├── grid_search        <- grid search train for to find best model
+    │   │
+    │   └── models             <- train models and then use trained models to make
     │
     ├── test_all.sh        <- Script for testing
     └── tests              <- Tests for all modules 
