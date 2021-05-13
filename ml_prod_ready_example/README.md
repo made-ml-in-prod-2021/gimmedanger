@@ -19,6 +19,11 @@ Train with test/val split for custom parameters:
 $ python ml_project/train_pipeline.py --config-name best_params_train
 ~~~
 
+Predict with pretrained model:
+~~~
+$ python ml_project/predict.py --config-name predict_params.yaml
+~~~
+
 Test:
 ~~~
 $ bash test_all.sh

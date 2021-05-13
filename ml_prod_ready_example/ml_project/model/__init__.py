@@ -1,6 +1,7 @@
 from .model_fit_predict import (
     train_model,
     serialize_model,
+    deserialize_model,
     predict_model,
     evaluate_model,
     build_model,
@@ -10,6 +11,7 @@ from .model_fit_predict import (
 __all__ = [
     'train_model',
     'serialize_model',
+    'deserialize_model',
     'evaluate_model',
     'predict_model',
     'build_model',

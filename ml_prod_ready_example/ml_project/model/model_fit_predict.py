@@ -21,7 +21,7 @@ def build_model(params: ModelParams) -> RandomForestClassifier:
 
 
 def build_pipeline(model: RandomForestClassifier, transformer: ColumnTransformer) -> Pipeline:
-    return Pipeline([("feature_generation", transformer), ("clf", model)])
+    return Pipeline([('feature_generation', transformer), ('clf', model)])
 
 
 def train_model(model: Pipeline, features: pd.DataFrame, target: pd.Series) -> Pipeline:
@@ -36,13 +36,18 @@ def predict_model(model: Pipeline, features: pd.DataFrame) -> np.ndarray:
 
 def evaluate_model(predicts: np.ndarray, target: pd.Series) -> Dict[str, float]:
     return {
-        "r2_score": r2_score(target, predicts),
-        "rmse": mean_squared_error(target, predicts, squared=False),
-        "mae": mean_absolute_error(target, predicts),
+        'r2_score': r2_score(target, predicts),
+        'rmse': mean_squared_error(target, predicts, squared=False),
+        'mae': mean_absolute_error(target, predicts),
     }
 
 
-def serialize_model(model: object, output: str) -> str:
-    with open(output, "wb") as f:
+def serialize_model(model: object, path: str) -> str:
+    with open(path, 'wb') as f:
         pickle.dump(model, f)
-    return output
+    return path
+
+
+def deserialize_model(path: str) -> str:
+    with open(path, 'rb') as f:
+        return pickle.load(f)

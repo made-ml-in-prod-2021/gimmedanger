@@ -1,7 +1,7 @@
 import hydra
 import pandas as pd
 from omegaconf import DictConfig
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
 from typing import Dict, Tuple
 
 from ml_project.entities import read_training_pipeline_params, TrainingPipelineParams
@@ -20,7 +20,7 @@ logger.addHandler(handler)
 
 
 def run_train_grid_search_pipeline(data: pd.DataFrame, params: TrainingPipelineParams) \
-        -> Tuple[RandomForestClassifier, Dict[str, float]]:
+        -> Tuple[Pipeline, Dict[str, float]]:
 
     transformer = build_transformer(params.feature_params)
     search_pipe = build_search_pipeline(transformer, params.model_params, params.search_params)
@@ -35,7 +35,7 @@ def run_train_grid_search_pipeline(data: pd.DataFrame, params: TrainingPipelineP
 
 
 def run_train_pipeline(data: pd.DataFrame, params: TrainingPipelineParams) \
-        -> Tuple[RandomForestClassifier, Dict[str, float]]:
+        -> Tuple[Pipeline, Dict[str, float]]:
 
     df_train, df_val = split_train_val_data(data, params.split_train_val_params)
     logger.info(f'Train dataset {df_train.shape}, Val dataset {df_val.shape} splitted!')
@@ -54,7 +54,7 @@ def run_train_pipeline(data: pd.DataFrame, params: TrainingPipelineParams) \
     metrics = evaluate_model(preds, y_val)
     logger.info(f'Val metrics: {metrics}')
 
-    return model, metrics
+    return pipe, metrics
 
 
 @hydra.main(config_path='../configs')
