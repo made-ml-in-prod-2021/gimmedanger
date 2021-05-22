@@ -1,4 +1,3 @@
-import sys
 import pickle
 import logging
 import uvicorn
@@ -81,6 +80,7 @@ def predict_model(
 app = FastAPI()
 model: Optional[Pipeline] = None
 predict_params: Optional[PredictParams] = None
+default_config_path = f'configs/predict_params.yaml'
 
 
 @app.get('/')
@@ -93,7 +93,7 @@ def load_model():
     global model
     global predict_params
     logger.info('App initialization started')
-    predict_params = read_predict_params(path=f'configs/predict_params.yaml')
+    predict_params = read_predict_params(path=default_config_path)
     logger.info(f'Loaded config: {predict_params}')
     model = deserialize_model(predict_params.trained_model_path)
     logger.info(f'Loaded model: {model}')
@@ -106,4 +106,4 @@ async def predict(request: XInput):
 
 
 if __name__ == '__main__':
-    uvicorn.run('app:app', host='0.0.0.0', port=80)
+    uvicorn.run('app:app', host='0.0.0.0', port=8000)
