@@ -49,9 +49,7 @@ For this test input server logs the following:
 INFO:     172.17.0.1:57748 - "GET /predict/ HTTP/1.1" 200 OK
 ~~~
 
-Built docker image was pushed to [hub.docker](https://hub.docker.com/repository/docker/gimmedanger/made-ml-in-prod-hw2)
-
-Local run with hub.docker image:
+Built docker image was pushed to [hub.docker](https://hub.docker.com/repository/docker/gimmedanger/made-ml-in-prod-hw2) and could be used:
 ~~~
 $ docker pull gimmedanger/made-ml-in-prod-hw2:v1
 $ docker run -p 80:80 gimmedanger/made-ml-in-prod-hw2:v1
