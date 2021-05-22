@@ -1,6 +1,6 @@
 # Homework 2 Docker and REST API
 
-REST-service implementation for interference with ML model implemented [before(https://github.com/made-ml-in-prod-2021/gimmedanger/tree/main/ml_prod_ready_example)
+REST-service implementation for interference with ML model implemented [before](https://github.com/made-ml-in-prod-2021/gimmedanger/tree/main/ml_prod_ready_example)
 
 ## Local run:
 
