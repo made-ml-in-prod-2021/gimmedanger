@@ -1,0 +1,9 @@
+experiment_name: 'best_params_train'
+input_data_path: 'data/raw/dataset.csv'
+output_model_path: 'models/model.pkl'
+split_train_val_params:
+  test_size: 0.2
+model_params:
+  random_state: 512
+  n_estimators: 75
+  max_depth: 7

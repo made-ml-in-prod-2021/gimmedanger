@@ -1,0 +1,19 @@
+experiment_name: 'grid_search_train'
+input_data_path: 'data/raw/dataset.csv'
+output_model_path: 'models/model.pkl'
+run_grid_search: True
+model_params:
+  random_state: 512
+search_params:
+  n_estimator_lst:
+    - 50
+    - 75
+    - 100
+    - 150
+    - 200
+  max_depth_lst:
+    - 5
+    - 7
+    - 9
+    - 11
+    - 13

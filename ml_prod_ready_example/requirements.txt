@@ -1,0 +1,23 @@
+antlr4-python3-runtime==4.8
+dataclasses==0.8
+hydra-core==1.0.6
+importlib-resources==5.1.2
+joblib==1.0.1
+marshmallow==3.12.1
+marshmallow-dataclass==8.4.1
+-e git+https://github.com/made-ml-in-prod-2021/gimmedanger.git@b72b52f04ba93e4d45f3fb54938c752cd9545c36#egg=ml_project&subdirectory=ml_prod_ready_example
+mypy-extensions==0.4.3
+numpy==1.19.5
+omegaconf==2.0.6
+pandas==1.1.5
+pkg-resources==0.0.0
+python-dateutil==2.8.1
+pytz==2021.1
+PyYAML==5.4.1
+scikit-learn==0.24.2
+scipy==1.5.4
+six==1.16.0
+threadpoolctl==2.1.0
+typing-extensions==3.10.0.0
+typing-inspect==0.6.0
+zipp==3.4.1
