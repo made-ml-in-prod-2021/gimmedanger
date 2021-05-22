@@ -42,15 +42,23 @@ def check_data(
     expected_features = feature_params.numerical_features + feature_params.categorical_features
 
     if not len(expected_features) == len(features):
-        raise HTTPException(status_code=400, detail='Wrong number of features')
+        msg = f'Wrong number of features: {len(expected_features)} != {len(features)}\n' \
+              f'expected_features={expected_features}\n' \
+              f'features={features}'
+        logger.error(msg)
+        raise HTTPException(status_code=400, detail=msg)
 
     for name in expected_features:
         if name not in input_features_set:
-            raise HTTPException(status_code=400, detail='Wrong names of features')
+            msg = f'Wrong names of features: {name} not in features'
+            logger.error(msg)
+            raise HTTPException(status_code=400, detail=msg)
 
     for x in data:
         if not len(x) == len(features):
-            raise HTTPException(status_code=400, detail='Wrong number of features in data')
+            msg = f'Wrong number of features in data: {len(x)} != {len(features)}'
+            logger.error(msg)
+            raise HTTPException(status_code=400, detail=msg)
 
 
 def predict_model(
