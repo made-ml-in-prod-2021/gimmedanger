@@ -1,7 +1,5 @@
-ml_example
+Homework 1 ML production ready example
 ==============================
-
-Example of ml project
 
 Installation: 
 ~~~
