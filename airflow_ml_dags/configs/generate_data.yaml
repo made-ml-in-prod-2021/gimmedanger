@@ -1,0 +1,5 @@
+dataset_rows: 500
+target_required: True
+path_historical_data: 'data/historical/data.csv'
+random_seed: 512
+
