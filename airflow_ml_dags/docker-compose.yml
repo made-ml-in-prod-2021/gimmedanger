@@ -80,5 +80,29 @@ services:
     image: airflow-generate-data
     restart: "no"
 
+  pipeline_prepare_data:
+    build:
+      context: images/airflow-pipeline-prepare-data
+    image: airflow-pipeline-prepare-data
+    restart: "no"
+
+#  pipeline_train_val_split:
+#    build:
+#      context: images/airflow-pipeline-train-val-split
+#    image: airflow-pipeline-train-val-split
+#    restart: "no"
+#
+#  pipeline_train_model:
+#    build:
+#      context: images/airflow-pipeline-train-model
+#    image: airflow-pipeline-train-model
+#    restart: "no"
+#
+#  pipeline_eval_model:
+#    build:
+#      context: images/airflow-pipeline-eval-model
+#    image: airflow-pipeline-eval-model
+#    restart: "no"
+
 volumes:
   logs:
