@@ -86,12 +86,12 @@ services:
     image: airflow-pipeline-prepare-data
     restart: "no"
 
-#  pipeline_train_val_split:
-#    build:
-#      context: images/airflow-pipeline-train-val-split
-#    image: airflow-pipeline-train-val-split
-#    restart: "no"
-#
+  pipeline_train_val_split:
+    build:
+      context: images/airflow-pipeline-train-val-split
+    image: airflow-pipeline-train-val-split
+    restart: "no"
+
 #  pipeline_train_model:
 #    build:
 #      context: images/airflow-pipeline-train-model
