@@ -105,5 +105,11 @@ services:
     image: airflow-pipeline-eval-model
     restart: "no"
 
+  predict:
+    build:
+      context: images/airflow-predict
+    image: airflow-predict
+    restart: "no"
+
 volumes:
   logs:
