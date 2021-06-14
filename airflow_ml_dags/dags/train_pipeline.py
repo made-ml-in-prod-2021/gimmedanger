@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from airflow import DAG
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.sensors.filesystem import FileSensor
@@ -6,9 +8,17 @@ from airflow.utils.dates import days_ago
 
 PROJECT_PATH = '/opt/hhd-drive/Yandex.Disk/Computer Science/courses/ml/made-ml-in-prod/hws/airflow_ml_dags'
 
+default_args = {
+    "owner": "airflow",
+    "email": ["vladim1r.nazarov@yandex.ru"],
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
+}
+
 
 with DAG(
     dag_id='training-pipeline',
+    default_args=default_args,
     start_date=days_ago(1),
     schedule_interval='@weekly',
     max_active_runs=1,
