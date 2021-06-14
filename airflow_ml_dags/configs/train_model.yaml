@@ -1,0 +1,23 @@
+experiment_name: 'best_params_train'
+feature_params:
+  target_col: 'target'
+  categorical_features:
+    - 'sex'
+    - 'chest_pain_type'
+    - 'fasting_blood_sugar'
+    - 'rest_ecg'
+    - 'exercise_induced_angina'
+    - 'st_slope'
+    - 'thalassemia'
+  numerical_features:
+    - 'cholesterol'
+    - 'age'
+    - 'st_depression'
+    - 'max_heart_rate_achieved'
+    - 'resting_blood_pressure'
+    - 'num_major_vessels'
+model_params:
+  random_state: 512
+  n_estimators: 75
+  max_depth: 7
+

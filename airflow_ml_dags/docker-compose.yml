@@ -92,17 +92,17 @@ services:
     image: airflow-pipeline-train-val-split
     restart: "no"
 
-#  pipeline_train_model:
-#    build:
-#      context: images/airflow-pipeline-train-model
-#    image: airflow-pipeline-train-model
-#    restart: "no"
-#
-#  pipeline_eval_model:
-#    build:
-#      context: images/airflow-pipeline-eval-model
-#    image: airflow-pipeline-eval-model
-#    restart: "no"
+  pipeline_train_model:
+    build:
+      context: images/airflow-pipeline-train-model
+    image: airflow-pipeline-train-model
+    restart: "no"
+
+  pipeline_eval_model:
+    build:
+      context: images/airflow-pipeline-eval-model
+    image: airflow-pipeline-eval-model
+    restart: "no"
 
 volumes:
   logs:

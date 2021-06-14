@@ -36,7 +36,29 @@ with DAG(
         network_mode='bridge',
         volumes=[f'{PROJECT_PATH}/configs:/configs', f'{PROJECT_PATH}/data:/data']
     )
-    train_model = BashOperator(task_id="2", bash_command='echo "model training!!!"')
-    eval_model = BashOperator(task_id="3", bash_command='echo "model evaluationg!!!"')
+
+    TRAIN_CONFIG_PATH = 'configs/train_model.yaml'
+    TRAIN_INPUT_PATH = 'data/processed/{{ ds }}/train_data.csv'
+    TRAIN_OUTPUT_PATH = 'data/models/{{ ds }}.pkl'
+    train_model = DockerOperator(
+        command=f'{TRAIN_CONFIG_PATH} {TRAIN_INPUT_PATH} {TRAIN_OUTPUT_PATH}',
+        image='airflow-pipeline-train-model',
+        task_id='docker-airflow-pipeline-train-model',
+        do_xcom_push=False,
+        network_mode='bridge',
+        volumes=[f'{PROJECT_PATH}/configs:/configs', f'{PROJECT_PATH}/data:/data']
+    )
+
+    EVAL_MODEL_PATH = 'data/models/{{ ds }}.pkl'
+    EVAL_INPUT_PATH = 'data/processed/{{ ds }}/val_data.csv'
+    EVAL_OUTPUT_PATH = 'data/evals/{{ ds }}.txt'
+    eval_model = DockerOperator(
+        command=f'{TRAIN_CONFIG_PATH} {EVAL_MODEL_PATH} {EVAL_INPUT_PATH} {EVAL_OUTPUT_PATH}',
+        image='airflow-pipeline-eval-model',
+        task_id='docker-airflow-pipeline-eval-model',
+        do_xcom_push=False,
+        network_mode='bridge',
+        volumes=[f'{PROJECT_PATH}/configs:/configs', f'{PROJECT_PATH}/data:/data']
+    )
 
     prepare_data >> train_val_split >> train_model >> eval_model
