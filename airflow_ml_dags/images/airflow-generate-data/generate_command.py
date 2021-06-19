@@ -30,8 +30,8 @@ def generate_data_impl(path_to_config: str, path_to_output: str):
     if not os.path.exists(outdir):
         os.mkdir(outdir)
     gen_df.to_csv(path_to_output)
-    pred_df = gen_df.drop(column=[params.features_params.target_col])
-    pred_df.to_csv(f'{path_to_output}/predict_data.csv')
+    pred_df = gen_df.drop(columns=[params.feature_params.target_col])
+    pred_df.to_csv(f'{outdir}/predict_data.csv')
 
 
 @click.command(name='generate_data')
