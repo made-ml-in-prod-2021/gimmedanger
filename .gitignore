@@ -90,3 +90,10 @@ target/
 # Mypy cache
 .mypy_cache/
 
+# Airflow graphs
+/airflow_ml_dags/data/raw/
+/airflow_ml_dags/data/evals/
+/airflow_ml_dags/data/models/
+/airflow_ml_dags/data/preds/
+/airflow_ml_dags/data/processed/
+
