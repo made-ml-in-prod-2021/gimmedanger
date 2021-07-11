@@ -6,7 +6,7 @@ REST-service implementation for interference with ML model implemented in [hw1](
 
 Installation and sanity check:
 ~~~
-$ python -m venv .venv
+$ virtualenv -p python3.8 .venv
 $ source .venv/bin/activate
 $ pip install -e .
 $ pytest
